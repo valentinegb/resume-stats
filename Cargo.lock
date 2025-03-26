@@ -889,6 +889,7 @@ name = "resume_stats"
 version = "0.1.0"
 dependencies = [
  "octocrab",
+ "serde",
  "tokio",
  "toml",
 ]
