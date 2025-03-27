@@ -1,0 +1,35 @@
+author = "valentinegb"
+# Languages to include in language stat, does not effect which commits or lines
+# are counted.
+languages = ["rs", "scm", "rb", "java"]
+
+[experience.zed-java-extension]
+# Repositories to look through for commits and lines.
+repositories = ["zed-extensions/java", "ABckh/zed-java-eclipse-jdtls"]
+
+[experience.homebrew]
+repositories = [
+    "homebrew/homebrew-core",
+    "homebrew/homebrew-cask",
+    "valentinegb/homebrew-personal",
+]
+
+[experience.frc-team-6764]
+repositories = [
+    "frc-team-6764/Tank",
+    "frc-team-6764/RobotsFTW",
+    "frc-team-6764/TileBot2023",
+    "frc-team-6764/PracticeBot",
+    "frc-team-6764/SwerveDrive",
+    "frc-team-6764/pr-designs",
+    "frc-team-6764/CrescendoRobot",
+    "frc-team-6764/TileBot2024",
+    "frc-team-6764/TShirtBot",
+    "frc-team-6764/TileBotHelp",
+    "frc-team-6764/MinimalSwerveDrive2025",
+    "frc-team-6764/wpilib-zed-files",
+    "frc-team-6764/.github-private",
+    "frc-team-6764/ReefscapeRobot",
+    "frc-team-6764/SwerveBotTest",
+    "frc-team-6764/YAGSL-Example",
+]

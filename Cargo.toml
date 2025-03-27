@@ -4,7 +4,13 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-octocrab = "0.44.0"
+anyhow = "1.0.97"
+dialoguer = { version = "0.11.0", default-features = false, features = ["password"] }
+futures-util = "0.3.31"
+indicatif = { version = "0.17.11", features = ["tokio"] }
+keyring = { version = "3.6.2", features = ["apple-native", "async-io", "tokio"] }
+octocrab = { version = "0.44.0", features = ["stream"] }
 serde = { version = "1.0.219", features = ["derive"] }
 tokio = { version = "1.44.1", features = ["full"] }
 toml = "0.8.20"
+whoami = { version = "1.6.0", default-features = false }
