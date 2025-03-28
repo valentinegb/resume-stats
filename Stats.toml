@@ -5,7 +5,7 @@ languages = ["rs", "scm", "rb", "java"]
 
 [experience.zed-java-extension]
 # Repositories to look through for commits and lines.
-repositories = ["zed-extensions/java", "ABckh/zed-java-eclipse-jdtls"]
+repositories = ["zed-extensions/java", "ABckh/zed-java-eclipse-jdtls", "zed-industries/extensions"]
 
 [experience.homebrew]
 repositories = [
