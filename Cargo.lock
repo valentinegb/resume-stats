@@ -1445,6 +1445,7 @@ name = "resume_stats"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "chrono",
  "console",
  "dialoguer",
  "futures-util",

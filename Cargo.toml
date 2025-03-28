@@ -9,6 +9,7 @@ license = "MIT"
 
 [dependencies]
 anyhow = "1.0.97"
+chrono = "0.4.40"
 console = "0.15.11"
 dialoguer = { version = "0.11.0", default-features = false, features = ["password"] }
 futures-util = "0.3.31"

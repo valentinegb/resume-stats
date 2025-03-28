@@ -6,6 +6,7 @@ use std::{
 };
 
 use anyhow::{anyhow, bail};
+use chrono::{DateTime, Utc};
 use console::style;
 use futures_util::StreamExt;
 use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
@@ -48,6 +49,8 @@ struct NeededStats {
 }
 
 struct Stats {
+    earliest_commit: DateTime<Utc>,
+    latest_commit: DateTime<Utc>,
     languages: HashSet<String>,
     commits: u64,
     lines: u64,
@@ -139,6 +142,12 @@ async fn try_main() -> anyhow::Result<()> {
                         .set_message(format!("{} ({owner}/{repository})", &commit_sha[..6]));
 
                     let commit = commit_handler.get(commit_sha).await?;
+                    let date = commit
+                        .commit
+                        .author
+                        .ok_or(anyhow!("commit is missing author"))?
+                        .date
+                        .ok_or(anyhow!("commit is missing date"))?;
                     let mut languages = HashSet::new();
                     let mut lines = 0;
 
@@ -161,6 +170,14 @@ async fn try_main() -> anyhow::Result<()> {
                         .await
                         .entry(experience.clone())
                         .and_modify(|stats| {
+                            if date < stats.earliest_commit {
+                                stats.earliest_commit = date;
+                            }
+
+                            if date > stats.latest_commit {
+                                stats.latest_commit = date;
+                            }
+
                             for language in languages.clone() {
                                 stats.languages.insert(language);
                             }
@@ -169,6 +186,8 @@ async fn try_main() -> anyhow::Result<()> {
                             stats.lines += lines;
                         })
                         .or_insert(Stats {
+                            earliest_commit: date,
+                            latest_commit: date,
                             languages,
                             commits: 1,
                             lines,
@@ -211,6 +230,8 @@ async fn try_main() -> anyhow::Result<()> {
         (
             experience,
             Stats {
+                earliest_commit,
+                latest_commit,
                 languages,
                 commits,
                 lines,
@@ -219,6 +240,12 @@ async fn try_main() -> anyhow::Result<()> {
     ) in stats.iter().enumerate()
     {
         println!("{}", style(format!("{experience}:")).green().bold());
+        println!(
+            "    {} {}–{}",
+            style(format!("{:10}", "Timeline:")).cyan().bold(),
+            earliest_commit.format("%B %Y"),
+            latest_commit.format("%B %Y"),
+        );
         println!(
             "    {} {}",
             style(format!("{:10}", "Languages:")).cyan().bold(),
