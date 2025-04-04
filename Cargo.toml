@@ -3,7 +3,7 @@ name = "resume_stats"
 version = "0.1.0"
 authors = ["Valentine Briese <valentinegb@icloud.com>"]
 edition = "2024"
-description = "A CLI tool I wrote to help me get the statistics for my résumé."
+description = "A CLI tool I wrote to help me get the statistics for my resume."
 repository = "https://github.com/valentinegb/resume-stats"
 license = "MIT"
 
@@ -11,10 +11,18 @@ license = "MIT"
 anyhow = "1.0.97"
 chrono = "0.4.40"
 console = "0.15.11"
-dialoguer = { version = "0.11.0", default-features = false, features = ["password"] }
+dialoguer = { version = "0.11.0", default-features = false, features = [
+    "password",
+] }
 futures-util = "0.3.31"
 indicatif = { version = "0.17.11", features = ["tokio"] }
-keyring = { version = "3.6.2", features = ["apple-native", "async-io", "linux-native", "tokio", "windows-native"] }
+keyring = { version = "3.6.2", features = [
+    "apple-native",
+    "async-io",
+    "linux-native",
+    "tokio",
+    "windows-native",
+] }
 octocrab = { version = "0.44.0", features = ["stream"] }
 serde = { version = "1.0.219", features = ["derive"] }
 tokio = { version = "1.44.1", features = ["full"] }
