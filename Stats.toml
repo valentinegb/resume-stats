@@ -40,3 +40,16 @@ repositories = [
     "frc-team-6764/pr-designs",
     "frc-team-6764/wpilib-zed-files",
 ]
+
+[experience.discord-apps]
+repositories = [
+    "serenity-rs/serenity",
+    "valentinegb/apple-music-rich-presence",
+    "valentinegb/cybrate",
+    "valentinegb/discord-patcher",
+    "valentinegb/discord_ai",
+    "valentinegb/embed-creator",
+    "valentinegb/goober-bot",
+    "valentinegb/kaomoji",
+    "valentinegb/poise-error",
+]
